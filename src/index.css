@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+/* Ionic Core Styles */
+@import "@ionic/react/css/core.css";
+@import "@ionic/react/css/normalize.css";
+@import "@ionic/react/css/structure.css";
+@import "@ionic/react/css/typography.css";
+@import "@ionic/react/css/padding.css";
+@import "@ionic/react/css/float-elements.css";
+@import "@ionic/react/css/text-alignment.css";
+@import "@ionic/react/css/text-transformation.css";
+@import "@ionic/react/css/flex-utils.css";
+@import "@ionic/react/css/display.css";
+
+/* ─── Design Tokens ─── */
+@theme {
+  --color-primary: #0fbd55;
+  --color-primary-dark: #0b8a3e;
+  --color-primary-light: #3fd67e;
+  --color-background-light: #f6f8f7;
+  --color-background-dark: #102217;
+  --color-surface: #ffffff;
+  --color-surface-dark: #1a2e22;
+  --color-glass-border: rgba(255, 255, 255, 0.15);
+  --color-glass-bg: rgba(255, 255, 255, 0.08);
+  --color-glass-highlight: rgba(255, 255, 255, 0.25);
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ─── Global Reset ─── */
+:root {
+  --ion-background-color: transparent;
+  --ion-font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Glass Components ─── */
+.glass-card {
+  background: rgba(16, 34, 23, 0.60);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.30);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.70);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.80);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
+}
+
+.glass-panel-dark {
+  background: rgba(26, 46, 34, 0.80);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.30);
+}
+
+.glass-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+  transition: all 0.3s ease-out;
+}
+
+.glass-btn:hover {
+  border-color: rgba(15, 189, 85, 0.5);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+  transform: translateY(-2px);
+}
+
+.glass-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.glass-btn-emerald:hover {
+  box-shadow: 0 0 30px rgba(15, 189, 85, 0.2), inset 0 0 20px rgba(15, 189, 85, 0.1);
+  border-color: #0fbd55;
+}
+
+.glass-btn-teal:hover {
+  box-shadow: 0 0 30px rgba(20, 184, 166, 0.2), inset 0 0 20px rgba(20, 184, 166, 0.1);
+  border-color: #14b8a6;
+}
+
+/* ─── Light Theme Glass Buttons ─── */
+.glass-btn-light {
+  background: rgba(255, 255, 255, 0.80);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease-out;
+}
+
+.glass-btn-light:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+/* ─── Badge / Chip ─── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.badge-success {
+  background: rgba(15, 189, 85, 0.12);
+  color: #0fbd55;
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+}
+
+.badge-danger {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+
+.badge-info {
+  background: rgba(59, 130, 246, 0.12);
+  color: #3b82f6;
+}
+
+/* ─── Receipt Zigzag ─── */
+.receipt-zigzag {
+  position: relative;
+}
+
+.receipt-zigzag::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: linear-gradient(135deg, #fff 33.33%, transparent 33.33%) 0 0,
+    linear-gradient(225deg, #fff 33.33%, transparent 33.33%) 0 0;
+  background-size: 12px 10px;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 189, 85, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 189, 85, 0.5);
+}
+
+/* ─── Animations ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ─── Stepper ─── */
+.stepper-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #1a2e22;
+}
+
+.stepper-btn:hover {
+  background: #0fbd55;
+  color: white;
+  border-color: #0fbd55;
+}
+
+.stepper-btn:active {
+  transform: scale(0.92);
+}
+
+/* ─── No Scroll ─── */
+.no-scroll {
+  --overflow: hidden;
+  overflow: hidden;
+}
+
+/* ─── Dot Indicators ─── */
+.table-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.table-dot-available {
+  background-color: #0fbd55;
+  box-shadow: 0 0 8px rgba(15, 189, 85, 0.4);
+}
+
+.table-dot-occupied {
+  background-color: #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+}
+
+.table-dot-reserved {
+  background-color: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+}
+
+/* ─── Kitchen Ticket ─── */
+.kitchen-ticket {
+  min-width: 280px;
+  max-width: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.kitchen-ticket:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── Ionic Overrides ─── */
+ion-content {
+  --background: transparent;
+}
+
+ion-page {
+  --background: transparent;
+}
